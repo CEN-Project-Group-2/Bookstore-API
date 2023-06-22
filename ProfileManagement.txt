@@ -1,0 +1,63 @@
+
+{
+  "username": "jimmy123",
+  "password": "jimmy2",
+  "name": "Jimmy Falon",
+  "email": "jimmyfallon@gmail.com",
+  "address": "23852 sw, Homestead, FL"
+}
+
+
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import UserSerializer
+from django.contrib.auth.models import User
+
+from models import CreditCard
+
+@api_view(['POST'])
+def create_credit_card(request, username):
+    user = User.objects.get(username=username)
+    serializer = CreditCardSerializer(data=request.data)
+    if serializer.is_valid():
+        CreditCard.objects.create(user=user, **serializer.validated_data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def create_user(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        user = User(**serializer.validated_data)
+        user.set_password(serializer.validated_data['password'])
+        user.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_user(request, username):
+    user = User.objects.get(username=username)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+{
+    "name": "John Doe Updated"
+}
+
+
+@api_view(['PUT'])
+def update_user(request, username):
+    user = User.objects.get(username=username)
+    serializer = UserSerializer(user, data=request.data, partial=True) # Set partial=True to update a data partially
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+{
+    "card_number": "123456789012",
+    "expiry_date": "12/23",
+    "cvv": "123"
+}

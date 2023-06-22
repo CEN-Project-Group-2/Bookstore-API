@@ -6,12 +6,15 @@ class Users(models.Model):
     created_at = models.DateField()
     deleted_at = models.DateField(null=True)
 
+    class Meta:
+        db_table = 'users'
+
     def __str__(self):
         return self.name
 
 # Populating the database with the provided data
-User.objects.create(name='Bill', created_at='2023-06-06')
-User.objects.create(name='Jim', created_at='2023-06-07')
-User.objects.create(name='Phil', created_at='2023-06-08')
-User.objects.create(name='Kevin', created_at='2023-06-09')
-User.objects.create(name='Kayle', created_at='2023-06-10')
+#Users.objects.create(name='Bill', created_at='2023-06-06')
+#Users.objects.create(name='Jim', created_at='2023-06-07')
+#Users.objects.create(name='Phil', created_at='2023-06-08')
+#Users.objects.create(name='Kevin', created_at='2023-06-09')
+#Users.objects.create(name='Kayle', created_at='2023-06-10')
