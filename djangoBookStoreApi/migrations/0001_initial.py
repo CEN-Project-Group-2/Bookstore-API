@@ -68,6 +68,8 @@ class Migration(migrations.Migration):
             name='BookDetails',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('genre', models.CharField(max_length=255)),
+                ('copies_sold', models.IntegerField()),
                 ('created_at', models.DateField()),
                 ('deleted_at', models.DateField(null=True)),
                 ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='djangoBookStoreApi.books')),
