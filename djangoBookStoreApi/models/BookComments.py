@@ -9,4 +9,4 @@ class BookComments(models.Model):
     comment = models.TextField()
 
     def __str__(self):
-        return self.id
+        return 'Comment {} by {}'.format(self.comment, self.user)

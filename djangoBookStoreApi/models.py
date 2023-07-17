@@ -7,3 +7,4 @@ from .models.WishListBooks import WishListBooks
 from .models.BookRatings import BookRatings
 from .models.BookComments import BookComments
 from .models.BookDetails import BookDetails
+
