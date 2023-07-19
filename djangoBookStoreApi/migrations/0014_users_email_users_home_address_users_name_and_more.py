@@ -33,6 +33,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='users',
             name='username',
-            field=models.CharField(blank=True, default='default-username', max_length=255, null=True),
+            field=models.CharField(blank=True, max_length=255, null=True),
         ),
     ]

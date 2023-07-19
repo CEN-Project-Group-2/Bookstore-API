@@ -6,7 +6,7 @@ class WishListBooks(models.Model):
     id = models.AutoField(primary_key=True)
     wish_list = models.ForeignKey(WishLists, on_delete=models.CASCADE)
     book = models.ForeignKey(Books, on_delete=models.CASCADE)
-    created_at = models.DateField()
+    created_at = models.DateField(auto_now_add=True)
     deleted_at = models.DateField(null=True)
 
     def __str__(self):

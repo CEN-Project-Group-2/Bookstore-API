@@ -2,17 +2,20 @@ import json
 from django.http import JsonResponse, HttpResponse
 from django.views import View
 from django.shortcuts import get_object_or_404
-from ..models import Books, BookComments, Users
+from ..models import Books, BookRatings, Users
 
-class BookCommentsView(View):
+class BookRatingsView(View):
     def post(self, request, id):
         try:
             book = get_object_or_404(Books, id=id)
         
             body = json.loads(request.body)
-            comment = body.get('comment')
-            if comment is None:
-                return HttpResponse("comment is missing from request", status=400)
+            rating = body.get('rating')
+            if rating is None:
+                return HttpResponse("rating is missing from request", status=400)
+            
+            if rating > 5 or rating < 1:
+                return HttpResponse("Invalid rating", status=400)
             
             userId = body.get('user_id')
             if userId is None:
@@ -20,13 +23,13 @@ class BookCommentsView(View):
             
             user = get_object_or_404(Users, id=userId)
             
-            bookComment = BookComments.objects.create(book=book, comment=comment, user=user)
+            BookRating = BookRatings.objects.create(book=book, rating=rating, user=user)
 
             return JsonResponse({
-                "message": "Book comment added successfully",
-                "comment_id": bookComment.id,
+                "message": "Book rating added successfully",
+                "rating_id": BookRating.id,
                 "book_id": id,
-                "comment": comment,
+                "rating": rating,
                 "user_id": userId,
             })
         except Exception as e:
