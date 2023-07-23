@@ -7,9 +7,7 @@ from .views.user_profile_view import CreateUserView
 from .views.user_profile_view import UserDetailView
 from .views.user_profile_view import CreateCreditCardView
 from .views.user_profile_view import UserUpdateView
-from .views.wish_list_books_view import wish_list_books_view
-from .views.wish_list_books_view import add_book_to_wishlist
-from .views.wish_list_books_view import create_new_wishlist
+from .views.wish_list_books_view import wish_list_books_view, add_book_to_wishlist, create_new_wishlist, delete_book_to_cart
 from .views.books_view import books_view
 from .views.book_details_view import book_details_view, genre_view, best_selling_books
 from .views.book_details_view import book_details_view
@@ -25,6 +23,7 @@ urlpatterns = [
     path('user/<int:id>/wishlist', wish_list_books_view),
     path('user/wishlist/add_book', add_book_to_wishlist),
     path('user/wishlist/create_wishlist', create_new_wishlist),
+    path('user/wishlist/delete_book_to_cart', delete_book_to_cart),
     path('books/', books_view, name='books'),
     path('books/genre/', genre_view, name='genre'),
     path('books/top_sellers/', best_selling_books, name='top_sellers'),
