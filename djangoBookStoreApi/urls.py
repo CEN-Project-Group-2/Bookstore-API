@@ -9,8 +9,7 @@ from .views.user_profile_view import CreateCreditCardView
 from .views.user_profile_view import UserUpdateView
 from .views.wish_list_books_view import wish_list_books_view, add_book_to_wishlist, create_new_wishlist, delete_book_to_cart
 from .views.books_view import books_view
-from .views.book_details_view import book_details_view, genre_view, best_selling_books, CreateBookDetailsView, \
-    get_book_details_by_isbn_view, get_all_book_details_view
+from .views.book_details_view import book_details_view, genre_view, best_selling_books, CreateBookDetailsView, get_book_details_by_isbn_view, get_all_book_details_view
 from .views.book_comments_view import BookCommentsView
 from .views.book_ratings_view import BookRatingsView
 from .views.author_view import CreateAuthorView, get_book_details_list_given_author_id
