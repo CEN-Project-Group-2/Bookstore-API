@@ -23,7 +23,7 @@ class BookRatingsView(View):
             
             user = get_object_or_404(Users, id=userId)
             
-            BookRating = BookRatings.objects.create(book=book, rating=rating, user=user)
+            BookRating = BookRatings.objects.get_or_create(book=book, rating=rating, user=user)
 
             return JsonResponse({
                 "message": "Book rating added successfully",

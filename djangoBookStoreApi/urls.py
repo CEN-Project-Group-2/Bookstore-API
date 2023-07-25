@@ -11,6 +11,7 @@ from .views.books_view import books_view
 from .views.book_details_view import book_details_view, genre_view, best_selling_books
 from .views.book_details_view import book_details_view
 from .views.book_comments_view import BookCommentsView
+from .views.book_comments_view import AllBookCommentsView
 from .views.book_ratings_view import BookRatingsView
 
 urlpatterns = [
@@ -27,5 +28,6 @@ urlpatterns = [
     path('books/top_sellers/', best_selling_books, name='top_sellers'),
     path('books/<int:id>/details', book_details_view),
     path('book/<int:id>/comments', BookCommentsView.as_view(), name='book_comments'),
-    path('book/<int:id>/ratings', BookRatingsView.as_view()),
+    path('book/<int:id>/allbookcomments/', AllBookCommentsView.as_view(), name='all_book_comments'),
+    path('book/<int:id>/ratings', BookRatingsView.as_view(), name='ratings'),
 ]
