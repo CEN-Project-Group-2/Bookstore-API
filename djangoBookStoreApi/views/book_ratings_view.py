@@ -4,6 +4,7 @@ from django.views import View
 from django.shortcuts import get_object_or_404
 from ..models import Books, Users
 from ..models import BookRatings
+from django.db.models import Avg
 
 class BookRatingsView(View):
     def post(self, request, id):
@@ -36,3 +37,11 @@ class BookRatingsView(View):
         except Exception as e:
             return HttpResponse(f"An error occurred: {str(e)}", status=500)
 
+class BookRatingsAvgView(View):
+    def get(self, request, id):
+        try:
+            all_ratings = BookRatings.objects.all()
+            average_rating = all_ratings.aggregate(Avg('score'))['score__avg']
+            return JsonResponse({'average_rating': average_rating})
+        except Exception as e:
+            return HttpResponse(f"An error occurred: {str(e)}", status=500)

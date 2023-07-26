@@ -13,6 +13,7 @@ from .views.book_details_view import book_details_view
 from .views.book_comments_view import BookCommentsView
 from .views.book_comments_view import AllBookCommentsView
 from .views.book_ratings_view import BookRatingsView
+from .views.book_ratings_view import BookRatingsAvgView
 
 urlpatterns = [
     path('test/', test_view),
@@ -30,4 +31,5 @@ urlpatterns = [
     path('book/<int:id>/comments', BookCommentsView.as_view(), name='book_comments'),
     path('book/<int:id>/allbookcomments/', AllBookCommentsView.as_view(), name='all_book_comments'),
     path('book/<int:id>/ratings', BookRatingsView.as_view(), name='ratings'),
+    path('book/<int:id>/ratingsavg', BookRatingsAvgView.as_view(), name='ratings'),
 ]
