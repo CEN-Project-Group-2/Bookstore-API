@@ -1,5 +1,6 @@
 from .Users import Users
 from .BookComments import BookComments
+from .BookRatings import BookRatings
 from .BookDetails import BookDetails
 from .Books import Books
 from .ShoppingCartBooks import ShoppingCartBooks

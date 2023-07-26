@@ -6,8 +6,8 @@ class BookRatings(models.Model):
     id = models.AutoField(primary_key=True)
     book = models.ForeignKey(Books, on_delete=models.CASCADE)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    rating = models.SmallIntegerField()
-    objects = models.Manager()
+    score = models.SmallIntegerField()
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+    
