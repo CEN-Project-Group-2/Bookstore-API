@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .views.test_views import test_view
-from .views.shopping_carts_view import ShoppingCartsView
+from .views.shopping_carts_view import ShoppingCartsView, GetAllShoppingCartsView
 from .views.user_profile_view import UserProfileView
 from .views.user_profile_view import CreateUserView
 from .views.user_profile_view import UserDetailView
@@ -37,4 +37,5 @@ urlpatterns = [
     path('book/details', get_all_book_details_view),
     path('author/creator', CreateAuthorView.as_view()),
     path('author/<int:author_id>', get_book_details_list_given_author_id),
+    path('user/<int:id>/shopping_carts/books', GetAllShoppingCartsView.as_view()),
 ]
