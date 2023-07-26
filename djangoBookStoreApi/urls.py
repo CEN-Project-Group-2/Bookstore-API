@@ -8,12 +8,13 @@ from .views.wish_list_books_view import wish_list_books_view
 from .views.wish_list_books_view import add_book_to_wishlist
 from .views.wish_list_books_view import create_new_wishlist
 from .views.books_view import books_view
-from .views.book_details_view import book_details_view, genre_view, best_selling_books
-from .views.book_details_view import book_details_view
+from .views.book_details_view import book_details_view, genre_view, best_selling_books, CreateBookDetailsView, \
+    get_book_details_by_isbn_view, get_all_book_details_view
 from .views.book_comments_view import BookCommentsView
 from .views.book_comments_view import AllBookCommentsView
-from .views.book_ratings_view import BookRatingsView
 from .views.book_ratings_view import BookRatingsAvgView
+from .views.author_view import CreateAuthorView, get_book_details_list_given_author_id
+
 
 urlpatterns = [
     path('test/', test_view),
@@ -32,4 +33,9 @@ urlpatterns = [
     path('book/<int:id>/allbookcomments/', AllBookCommentsView.as_view(), name='all_book_comments'),
     path('book/<int:id>/ratings', BookRatingsView.as_view(), name='ratings'),
     path('book/<int:id>/ratingsavg', BookRatingsAvgView.as_view(), name='ratings'),
+    path('books', CreateBookDetailsView.as_view()),
+    path('books/details', get_book_details_by_isbn_view),
+    path('book/details', get_all_book_details_view),
+    path('author/creator', CreateAuthorView.as_view()),
+    path('author/<int:author_id>', get_book_details_list_given_author_id),
 ]
