@@ -11,7 +11,7 @@ from .views.wish_list_books_view import wish_list_books_view, add_book_to_wishli
 from .views.books_view import books_view
 from .views.book_details_view import book_details_view, genre_view, best_selling_books, CreateBookDetailsView, get_book_details_by_isbn_view, get_all_book_details_view
 from .views.book_comments_view import BookCommentsView
-from .views.book_ratings_view import BookRatingsView
+from .views.book_ratings_view import BookRatingsView, discount_books_by_publisher, get_books_by_rating
 from .views.author_view import CreateAuthorView, get_book_details_list_given_author_id
 
 urlpatterns = [
@@ -27,6 +27,8 @@ urlpatterns = [
     path('books/', books_view, name='books'),
     path('books/genre/', genre_view, name='genre'),
     path('books/top_sellers/', best_selling_books, name='top_sellers'),
+    path('book/ratings/', get_books_by_rating, name='books-by-rating'),
+    path('book/discount/', discount_books_by_publisher, name='discount-books'),
     path('books/<int:id>/details', book_details_view),
     path('user/create-credit-card', CreateCreditCardView.as_view(), name='create_credit_card'),
     path('user/<int:user_id>/update', UserUpdateView.as_view(), name='user-update'),
